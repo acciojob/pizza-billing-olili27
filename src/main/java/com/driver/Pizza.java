@@ -73,6 +73,7 @@ public class Pizza {
             if (isToppingsAdded)   bill = bill + "Extra Toppings Added: " + toppingsPrice + "\n";
 
             bill = bill + "Total Price: " + totalPrice + "\n";
+            isBilled = true;
         }
         return this.bill;
     }
