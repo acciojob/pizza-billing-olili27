@@ -14,7 +14,7 @@ public class Pizza {
         } else {
             this.price = 400;
         }
-        bill = this.price + " ";
+        bill = this.price + "";
     }
 
     public int getPrice(){
@@ -32,7 +32,7 @@ public class Pizza {
 
         cheeseAdded = true;
 
-        bill = sampleBill + " ";
+        bill = sampleBill + "";
     }
 
     public boolean toppingsAdded = false;
@@ -52,7 +52,7 @@ public class Pizza {
 
         toppingsAdded = true;
 
-        bill = sampleBill + " ";
+        bill = sampleBill + "";
     }
 
     public void addTakeaway(){
@@ -60,7 +60,7 @@ public class Pizza {
         int sampleBill = Integer.parseInt(bill);
         sampleBill += 20;
 
-        bill = sampleBill + " ";
+        bill = sampleBill + "";
     }
 
     public String getBill(){
