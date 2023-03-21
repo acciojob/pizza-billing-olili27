@@ -2,75 +2,76 @@ package com.driver;
 
 public class Pizza {
 
-    private int price;
-    private Boolean isVeg;
+    private final int price;
     private String bill;
+    private final int paperBagPrice;
+    private final int toppingsPrice;
+    private final int cheesePrice;
+    private boolean isCheeseAdded;
+    private boolean isToppingsAdded;
+    private boolean isPaperBagAdded;
+    private int totalPrice;
+    private boolean isBilled;
 
     public Pizza(Boolean isVeg){
-        this.isVeg = isVeg;
-        // your code goes here
+        isCheeseAdded = false;
+        isBilled = false;
+        isToppingsAdded = false;
+        isPaperBagAdded = false;
+        paperBagPrice = 20;
+        cheesePrice = 80;
+
         if (isVeg) {
             this.price = 300;
+            this.toppingsPrice = 70;
         } else {
             this.price = 400;
+            this.toppingsPrice = 120;
         }
-        bill = this.price + "";
 
-        System.out.println("Base Price Of The Pizza: " + this.price);
+        totalPrice = this.price;
+
+        bill = "Base Price Of The Pizza: " + this.price + "\n";
     }
 
     public int getPrice(){
         return this.price;
     }
 
-    public boolean cheeseAdded = false;
+
     public void addExtraCheese(){
         // your code goes here
-        if (cheeseAdded) return;
-
-        int sampleBill = Integer.parseInt(bill);
-
-        sampleBill += 80;
-
-        cheeseAdded = true;
-
-        bill = sampleBill + "";
-        System.out.println("Extra Cheese Added: " + 80 );
+        if (!isCheeseAdded) {
+            this.totalPrice += cheesePrice;
+            isCheeseAdded = true;
+        }
     }
 
-    public boolean toppingsAdded = false;
     public void addExtraToppings(){
         // your code goes here
-        if(toppingsAdded) return;
-
-        if (!cheeseAdded) addExtraCheese();
-
-        int sampleBill = Integer.parseInt(bill);
-
-        if (isVeg) {
-            sampleBill += 70;
-        } else {
-            sampleBill += 120;
+        if (!isToppingsAdded) {
+            this.totalPrice += toppingsPrice;
+            isToppingsAdded = true;
         }
-
-        toppingsAdded = true;
-
-        bill = sampleBill + "";
-        System.out.println("Extra Toppings Added: " + 70);
     }
 
     public void addTakeaway(){
         // your code goes here
-        int sampleBill = Integer.parseInt(bill);
-        sampleBill += 20;
+       if (!isPaperBagAdded) {
+           totalPrice += paperBagPrice;
+           isPaperBagAdded = true;
 
-        bill = sampleBill + "";
-        System.out.println("Paper Bag Added: " + 20);
+           bill = bill + "Paperbag Added: " + paperBagPrice + "\n";
+       }
     }
 
     public String getBill(){
         // your code goes here
-        System.out.println("Total Price: " + this.bill);
+        if(!isBilled) {
+            if (isCheeseAdded) bill = bill + "Extra Cheese Added: " + cheesePrice + "\n";
+
+            if (isToppingsAdded)   bill = bill + "Extra Toppings Added: " + toppingsPrice + "\n";
+        }
         return this.bill;
     }
 }
