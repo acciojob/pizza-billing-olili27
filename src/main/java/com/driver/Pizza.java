@@ -15,6 +15,8 @@ public class Pizza {
             this.price = 400;
         }
         bill = this.price + "";
+
+        System.out.println("Base Price Of The Pizza: " + this.price);
     }
 
     public int getPrice(){
@@ -33,6 +35,7 @@ public class Pizza {
         cheeseAdded = true;
 
         bill = sampleBill + "";
+        System.out.println("Extra Cheese Added: " + 80 );
     }
 
     public boolean toppingsAdded = false;
@@ -53,6 +56,7 @@ public class Pizza {
         toppingsAdded = true;
 
         bill = sampleBill + "";
+        System.out.println("Extra Toppings Added: " + 70);
     }
 
     public void addTakeaway(){
@@ -61,10 +65,12 @@ public class Pizza {
         sampleBill += 20;
 
         bill = sampleBill + "";
+        System.out.println("Paper Bag Added: " + 20);
     }
 
     public String getBill(){
         // your code goes here
+        System.out.println("Total Price: " + this.bill);
         return this.bill;
     }
 }
